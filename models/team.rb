@@ -1,3 +1,5 @@
+require_relative( '../db/sql_runner' )
+
 class Team
 
   attr_accessor :id, :team_name, :location
@@ -28,6 +30,7 @@ class Team
     sql = "DELETE FROM teams WHERE id = #{ @id };"
     SqlRunner.run( sql )
   end
+
 
 
 

@@ -11,4 +11,4 @@ class SqlRunner
       return result
     end
 
-  end
+end

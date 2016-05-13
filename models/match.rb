@@ -1,9 +1,11 @@
+require_relative( '../db/sql_runner' )
+
 class Match
 
   attr_accessor :id, :home_score, :away_score, :home_id, :away_id
 
   def initialize( params )
-    @id = [ 'id' ]
+    @id = params[ 'id' ].to_i
     @home_score = params[ 'home_score' ].to_i
     @away_score = params[ 'away_score' ].to_i
     @home_id = params[ 'home_id' ].to_i
@@ -11,9 +13,10 @@ class Match
   end
 
   def save()
-    sql = "INSERT INTO matches ( 'home_score', 'away_score', 'home_id', 'away_id' ) 
-          VALUES ( '#{ @home_score }', '#{ @away_score }', #{ @home_id }, #{ @away_id }
-          "
+    sql = "INSERT INTO matches ( home_score, away_score, home_id, away_id ) 
+          VALUES ( #{ @home_score }, #{ @away_score }, #{ @home_id }, #{ @away_id }
+          )
+          RETURNING *;"
 
     return Match.map_item( sql )
   end
@@ -27,6 +30,7 @@ class Match
           "
     return Team.map_items( sql )
   end
+
 
 
 
