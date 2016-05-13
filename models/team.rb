@@ -1,9 +1,11 @@
 class Team
 
+  attr_accessor :id, :team_name, :location
+
   def initialize( params )
-    @id = [ 'id' ]
+    @id = params[ 'id' ].to_i
     @team_name = params[ 'team_name' ]
-    @location = [ 'location' ]
+    @location = params[ 'location' ]
   end
 
   def save()
@@ -26,6 +28,10 @@ class Team
     sql = "DELETE FROM teams WHERE id = #{ @id };"
     SqlRunner.run( sql )
   end
+
+
+
+
 
   def self.map_items( sql )
     teams = SqlRunner.run( sql )

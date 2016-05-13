@@ -1,12 +1,35 @@
 class Match
 
+  attr_accessor :id, :home_score, :away_score, :home_id, :away_id
+
   def initialize( params )
     @id = [ 'id' ]
-    @home_score = params[ 'home_score' ]
-    @away_score = params[ 'away_score' ]
-    @home_id = params[ 'home_id' ]
-    @away_id = params[ 'away_id' ]
+    @home_score = params[ 'home_score' ].to_i
+    @away_score = params[ 'away_score' ].to_i
+    @home_id = params[ 'home_id' ].to_i
+    @away_id = params[ 'away_id' ].to_i
   end
+
+  def save()
+    sql = "INSERT INTO matches ( 'home_score', 'away_score', 'home_id', 'away_id' ) 
+          VALUES ( '#{ @home_score }', '#{ @away_score }', #{ @home_id }, #{ @away_id }
+          "
+
+    return Match.map_item( sql )
+  end
+
+  def update()
+    sql = "UPDATE teams 
+            SET team_name = '#{ @team_name }', location = '#{ @location }', 
+            WHERE id = #{ @id };"
+    sql = "UPDATE matches
+          SET home_score = #{ @home_score }, away_score = #{ @away_score }, home_id = #{ @home_id }, away_id = #{ @away_id }
+          "
+    return Team.map_items( sql )
+  end
+
+
+
 
 
 
