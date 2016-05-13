@@ -31,7 +31,10 @@ class Match
 
 
 
-
+  def self.delete_all()
+    sql = "DELETE FROM matches;"
+    SqlRunner.run( sql )
+  end
 
   def self.map_items( sql )
     matches = SqlRunner.run( sql )
