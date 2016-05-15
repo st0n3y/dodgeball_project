@@ -1,5 +1,6 @@
 require( 'minitest/autorun' )
 require( 'minitest/rg' )
+require('colorize')
 require_relative( '../models/league.rb' )
 require_relative( '../models/match.rb' )
 require_relative( '../models/team.rb' )
@@ -46,30 +47,36 @@ class TestLeague < MiniTest::Test
     assert_equal( 3, result )
   end
 
-  def test_num_of_league_points_for_t3()
+  def test_num_of_league_points_for_t3() #2 points for a win, 1 for a draw, 0 for a loss
     result = @league.num_of_league_points( @teams[ 2 ] )
     assert_equal( 8, result )
   end
 
+  # def test_order_by_league_points()
+  #   result = @league.order_by_league_points( @teams )
+  #   assert_equal( [ t3, t1, t2, t4 ], result )
+  # end
+
   def test_league_table()
+
     t1_points = @league.num_of_league_points( @teams[0])
     t2_points = @league.num_of_league_points( @teams[1])
     t3_points = @league.num_of_league_points( @teams[2])
     t4_points = @league.num_of_league_points( @teams[3])
 
-    puts "Team         |  League Points"
-    print "-------------------------------"
+    puts "       Team    |  League Points"
+    print "-----------------------------------"
     puts ""
-    puts "Radges         |  " << t1_points.to_s
-    print "-------------------------------"
+    puts "     Radges    |  #{t1_points.to_s}".yellow
+    print "-----------------------------------"
     puts ""
-    puts "Bams           |  " << t2_points.to_s
-    print "-------------------------------"
+    puts "       Bams    |  #{t2_points.to_s}".green
+    print "-----------------------------------"
     puts ""
-    puts "Beanos         |  " << t3_points.to_s
-    print "-------------------------------"
+    puts "     Beanos    |  #{t3_points.to_s}".blue
+    print "-----------------------------------"
     puts ""
-    puts "Jammy Dodgers  |  " << t4_points.to_s
+    puts "Jammy Dodgers  |  #{t4_points.to_s}".red
   end
 
 end

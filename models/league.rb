@@ -42,4 +42,10 @@ class League
     return total
   end
 
+  # def order_by_league_points( teams )
+  #   teams_by_points = []
+  #   teams.each { |team| teams_by_points << @league.num_of_league_points( @teams[team]) }
+  #   return teams_by_points.sort
+  # end
+
 end
