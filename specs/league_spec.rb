@@ -60,16 +60,16 @@ class TestLeague < MiniTest::Test
     puts "Team         |  League Points"
     print "-------------------------------"
     puts ""
-    puts "Radges         |  " << t1_points
+    puts "Radges         |  " << t1_points.to_s
     print "-------------------------------"
     puts ""
-    puts "Bams           |  " << t2_points
+    puts "Bams           |  " << t2_points.to_s
     print "-------------------------------"
     puts ""
-    puts "Beanos         |  " << t3_points
+    puts "Beanos         |  " << t3_points.to_s
     print "-------------------------------"
     puts ""
-    puts "Jammy Dodgers  |  " << t4_points
+    puts "Jammy Dodgers  |  " << t4_points.to_s
   end
 
 end
